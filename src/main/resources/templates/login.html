@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+
+<head>
+    <title>OglasIMI</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/proposal.css">
+</head>
+
+<body>
+
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark" aria-label="Eighth navbar example">
+        <div class="container">
+            <a class="navbar-brand" href="/">OglasIMI</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07"
+                aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample07">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Nadji posao</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login">Uloguj se</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- main container -->
+    <div id="main" class="container justify-content-center ">
+        <h1 class="display-2">Prijava</h1>
+        <form id="forms" method="POST" class="needs-validation" novalidate action="login">
+            <br>
+            <div class="form-group col-md-6">
+                <label for="username">Username</label>
+                <input type="txt" class="form-control" id="username" name="username" placeholder="Username"
+                    required th:value="${username}">
+                <div class="invalid-feedback">Molimo Vas, unesite validno korisničko ime.<br>Username može imati od 4 do
+                    20 karaktera,
+                    dozvoljena su slova i brojevi, nisu dozvoljeni specijalni karakteri kao i razmak.</div>
+                <div class="valid-feedback">Odlično!</div>
+                <!-- <small id="passowrdHelp" class="form-text text-muted">Username može imati od 4 do 20 karaktera,
+                    dozvoljena su slova i brojevi, nisu dozvoljeni specijalni karakteri kao i razmak. </small> -->
+            </div>
+            <br>
+            <div class="form-group col-md-6">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+                    required>
+                <div class="invalid-feedback">Molimo Vas, unesite validnu lozinku.<br>Lozinka mora imati najmanje 8
+                    karaktera, 1
+                    veliko slovo, 1 malo slovo
+                    i 1 broj, može da sadrži specijalne karaktere. Nije dozvoljen razmak.</div>
+                <div class="valid-feedback">Odlično!</div>
+                <!-- <small id="passowrdHelp" class="form-text text-muted">Lozinka mora imati najmanje 8 karaktera, 1
+                    veliko slovo, 1 malo slovo
+                    i 1 broj, može da sadrži specijalne karaktere. Nije dozvoljen razmak.</small> -->
+            </div>
+
+            <br>
+            <button type="submit" class="btn btn-success col-md-2">Prijavi Se</button>
+        </form>
+
+        <br>
+        <a class="a" href="register">Nemate nalog? Napravite novi!</a>
+        <br>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+    <script src="jss/app.js"></script>
+</body>
+
+</html>

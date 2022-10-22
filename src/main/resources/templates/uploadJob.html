@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+
+<head>
+    <title>OglasIMI</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/proposal.css">
+    <!-- Multiple Select Plugin -->
+    <link rel="stylesheet" href="css/multiple-select.css" />
+</head>
+
+<body>
+
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark" aria-label="Eighth navbar example">
+        <div class="container">
+            <a class="navbar-brand" href="/">OglasIMI</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07"
+                aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample07">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dodajOglas">Dodaj oglas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Nadji posao</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="inbox">Inbox</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="user">Moj profil</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- main container -->
+    <div id="main" class="container justify-content-center ">
+        <h1 class="display-2" th:text="${naziv}"/>
+        <form id="forms" method="POST" class="needs-validation" novalidate th:action="${akcija}">
+            <!-- action = "naziv-action-php-fajla.php" -->
+            <br>
+            <div class="form-group col-md-5">
+                <label for="korisnikUloga">Kategorija</label>
+                <select class="form-control" id="korisnikUloga" name="kategorija"  th:utext="${kategorija}"/>
+            </div>
+            <br>
+            <div class="form-group col-md-5">
+                <label for="nazivOglasa">Naziv</label>
+                <input type="txt" class="form-control" id="nazivOglasa" name="nazivOglasa" placeholder="Naziv Oglasa"
+                    required th:value="${nazivOglasa}">
+                <div class="invalid-feedback">Molimo Vas, unesite naziv oglasa. Polje ne može biti prazno.</div>
+                <div class="valid-feedback">Odlično!</div>
+            </div>
+            <br>
+            <div class="form-group col-md-5">
+                <label for="opisOglasa">Detalji</label>
+                <textarea class="form-control" id="opisOglasa" name="opisOglasa"
+                    placeholder="Detalji posla, do 2000 karaktera" rows=6 required th:text="${opisOglasa}"></textarea>
+                <div class="invalid-feedback">>Molimo Vas, unesite detalje posla. Polje ne može biti prazno.</div>
+                <div class="valid-feedback">Odlično!</div>
+            </div>
+            <br>
+            <div class="form-group col-md-5">
+                <label for="ms">Vestine</label>
+                <select name="skills" multiple="multiple" class="form-control ms"  th:utext="${skills}">
+                </select>
+            </div>
+            <br>
+            <div class="form-group col-md-5">
+                <label for="ms">Edukacija</label>
+                <select name="edukacija" multiple="multiple" class="form-control ms" th:utext="${edukacija}"/>
+            </div>
+            <br>
+            <div class="form-group col-md-5">
+                <label for="lokacija">Lokacija</label>
+                <select class="form-control" id="lokacija" name="lokacija" th:utext="${lokacija}"/>
+            </div>
+            <br>
+            <legend class="col-form-label ">Da li je potrebno iskustvo?</legend>
+            <div class="form-check form-check-inline col-md-1">
+                <input class="form-check-input" type="radio" name="iskustvo" id="iskustvoDa" value="1" th:checked="${iskustvoDa}">
+                <label class="form-check-label" for="iskustvoDa">Da</label>
+            </div>
+            <div class="form-check form-check-inline col-md-1">
+                <input class="form-check-input" type="radio" name="iskustvo" id="iskustvoNe" value="0" th:checked="${iskustvoNe}">
+                <label class="form-check-label" for="iskustvoNe">Ne</label>
+            </div>
+            <br>
+            <legend class="col-form-label ">Da li je moguć rad od kuće?</legend>
+            <div class="form-check form-check-inline col-md-1">
+                <input class="form-check-input" type="radio" name="radOdKuce" id="radOdKuceDa" value="1" th:checked="${radOdKuceDa}">
+                <label class="form-check-label" for="radOdKuceDa">Da</label>
+            </div>
+            <div class="form-check form-check-inline col-md-1">
+                <input class="form-check-input" type="radio" name="radOdKuce" id="radOdKuceNe" value="0" th:checked="${radOdKuceNe}">
+                <label class="form-check-label" for="radOdKuceNe">Ne</label>
+            </div>
+            <br>
+            <br>
+            <button type="submit" class="btn btn-success col-md-2" th:text="${dugme}"/>
+            <div th:utext="${odustani}"/>
+            <br>
+            <br>
+            <br>
+        </form>
+
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+    <script src="jss/app.js"></script>
+
+            <!-- Multiple Select -->
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+                integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+                crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+                integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+                crossorigin="anonymous"></script>
+    <script src="jss/multiple-select.js"></script>
+    <script>
+        $(function () {
+            $('.ms').change(function () {
+                console.log($(this).val());
+            }).multipleSelect({
+                width: '100%'
+            });
+        });
+    </script>
+
+</body>
+
+</html>
